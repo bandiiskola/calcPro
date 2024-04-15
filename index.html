@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulátor</title>
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="number" id="number1" placeholder="number 1">
+            <select id="operation">
+              <option value="addition">+</option>
+              <option value="subtraction">–</option>
+              <option value="multiplication">*</option>
+              <option value="divide">/</option>
+          </select>
+            <input type="number" id="number2" placeholder="number 2">
+        </div>
+        <div class="buttons">
+            <button id="clear" pys-onClick="clear">C</button>
+            <button id="equal" pys-onClick="calculate">=</button>
+        </div>
+        <div class="result">
+            <p id="result-number">0</p>
+        </div>
+    </div>
+    
+<py-script>
+number1 = document.getElementById("number1")
+number2 = document.getElementById("number2")
+operation = document.getElementById("operation")
+resultNumber = document.getElementById("result-number")
+
+def clear(*args, **kwargs):
+     number1.value = ""
+     number2.value = ""
+     operation.selectedIndex = 0
+     resultNumber.innerText = "0"
+
+def calculate(*args, **kwargs):
+     n1 = float(number1.value)
+     n2 = float(number2.value)
+     result = 0
+
+     if operation.value == "addition":
+         result = n1 + n2
+     elif operation.value == "subtraction":
+         result = n1 - n2
+     elif operation.value == "multiplication":
+         result = n1 * n2
+     else:
+         if n2 != 0:
+             result = n1 / n2
+     
+     resultNumber.innerText = f"{result:.2f}" 
+</py-script>
+</body>
+</html>
