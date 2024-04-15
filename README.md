@@ -1,0 +1,3 @@
+# calcPro
+
+Csináljatok egy számológépet!
